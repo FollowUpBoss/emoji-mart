@@ -127,7 +127,7 @@ Emoji.defaultProps = {
   skin: 1,
   set: 'apple',
   sheetSize: 64,
-  native: false,
+  native: true,
   forceSize: false,
   backgroundImageFn: ((set, sheetSize) => `https://unpkg.com/emoji-datasource-${set}@${EMOJI_DATASOURCE_VERSION}/img/${set}/sheets/${sheetSize}.png`),
   onOver: (() => {}),

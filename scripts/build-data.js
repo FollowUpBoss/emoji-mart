@@ -21,10 +21,18 @@ emojiData.sort((a, b) => {
   return aTest - bTest
 })
 
+let skippedCount = 0;
+const unicodeVersions = ['1.1', '3.0', '3.2', '4.0', '4.1', '5.1', '5.2', '6.0', '6.1']
+
 emojiData.forEach((datum) => {
   var category = datum.category,
       keywords = [],
       categoryIndex
+
+  if (datum.category === 'Flags' || unicodeVersions.indexOf(datum.added_in) === -1 || datum.skin_variations) {
+    skippedCount++;
+    return;
+  }
 
   if (!datum.category) {
     throw new Error('“' + datum.short_name + '” doesn’t have a category')
@@ -76,7 +84,14 @@ emojiData.forEach((datum) => {
   delete datum.softbank
   delete datum.google
   delete datum.image
-  delete datum.short_name
+  delete datum.has_img_apple
+  delete datum.has_img_google
+  delete datum.has_img_twitter
+  delete datum.has_img_emojione
+  delete datum.has_img_facebook
+  delete datum.has_img_messenger
+  delete datum.sheet_x
+  delete datum.sheet_y
   delete datum.category
   delete datum.sort_order
 
