@@ -29,7 +29,7 @@ emojiData.forEach((datum) => {
       keywords = [],
       categoryIndex
 
-  if (datum.category === 'Flags' || unicodeVersions.indexOf(datum.added_in) === -1 || datum.skin_variations) {
+  if (datum.category === 'Flags' || unicodeVersions.indexOf(datum.added_in) === -1) {
     skippedCount++;
     return;
   }
@@ -94,6 +94,7 @@ emojiData.forEach((datum) => {
   delete datum.sheet_y
   delete datum.category
   delete datum.sort_order
+  delete datum.skin_variations
 
   for (let key in datum) {
     let value = datum[key]
